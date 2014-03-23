@@ -5,27 +5,6 @@
 
 int main(int argc, char** argv)
 {
-	//startWord = "KOT";
-	//endWord = "TOT";
-
-	//// TODO check length startWord && endWord
-
-	//vocabulary.push_back("KOT");
-	//vocabulary.push_back("TOH");
-	//vocabulary.push_back("HOTA");
-	//vocabulary.push_back("KOTS");
-	//vocabulary.push_back("POT");
-	//vocabulary.push_back("POTA");
-	//vocabulary.push_back("TOT");
-	//vocabulary.push_back("POB");
-
-
-	//// check startWordItem != nullptr
-
-	//Visit(startWordItem);
-
-	//// GOT IT
-
 	setlocale(LC_ALL, "");
 
 	if (argc < 3)
@@ -43,7 +22,7 @@ int main(int argc, char** argv)
 		auto bestPath = solver.Run();
 
 		for (auto const& pathItem : bestPath)
-			std::cout << pathItem->Get() << std::endl;
+			std::cout << pathItem << std::endl;
 	}
 	catch (const std::exception& e)
 	{
