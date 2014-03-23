@@ -67,6 +67,9 @@ void Solver::Visit(WordItem::Ptr item)
 
 Types::Solution Solver::Run()
 {
+	if (m_StartWordItem == nullptr)
+		throw std::runtime_error("Something gone wrong. Start word is null");
+
 	Visit(m_StartWordItem);
 
 	Types::Solution solution;
