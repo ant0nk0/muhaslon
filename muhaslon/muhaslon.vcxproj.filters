@@ -62,5 +62,8 @@
     <ClInclude Include="configuration_validator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="non_copyable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

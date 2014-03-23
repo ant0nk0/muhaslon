@@ -15,11 +15,11 @@ public:
 	}
 
 public:
-	// implementation of IConfiguration
 	virtual void Initialize() override
 	{
 		ReadStartEndWords(m_StartEnd);
 		ReadVocabulary(m_Vocabulary);
+		SetInitialized();
 	}
 
 private:
@@ -70,45 +70,6 @@ TEST_F(ConfigurationTest, MissedEndWord)
 {
 	{
 		se << "KOT";
-	}
-
-	FakeConfiguration config(se, voc);
-	EXPECT_THROW(config.Initialize(), std::exception);
-}
-
-TEST_F(ConfigurationTest, EmptyStartWord)
-{
-	se << std::endl;
-
-	FakeConfiguration config(se, voc);
-	EXPECT_THROW(config.Initialize(), std::exception);
-}
-
-TEST_F(ConfigurationTest, EmptyEndWord)
-{
-	se << std::endl;
-	se << std::endl;
-
-	FakeConfiguration config(se, voc);
-	EXPECT_THROW(config.Initialize(), std::exception);
-}
-
-TEST_F(ConfigurationTest, StartEndWordLengthEquals)
-{
-	{
-		se << "KOT" << std::endl;
-		se << "TOT" << std::endl;
-	}
-
-	FakeConfiguration config(se, voc);
-	EXPECT_NO_THROW(config.Initialize());
-}
-
-TEST_F(ConfigurationTest, StartEndWordLengthNotEquals)
-{
-	{
-		se << "KOT" << std::endl;
-		se << "TOPT" << std::endl;
 	}
 
 	FakeConfiguration config(se, voc);

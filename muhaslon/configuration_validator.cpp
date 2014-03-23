@@ -41,10 +41,10 @@ void ConfigurationValidator::Check(IConfiguration::Ptr configuration)
 	}
 
 	if (!hasStartWord)
-		throw std::runtime_error("Vocabulary has not Start word");
+		throw std::runtime_error("Vocabulary does not contain Start word");
 
 	if (!hasEndWord)
-		throw std::runtime_error("Vocabulary has not End word");
+		throw std::runtime_error("Vocabulary does not contain End word");
 }
 
 } // namespace MuhaSlon

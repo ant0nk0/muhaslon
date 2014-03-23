@@ -42,6 +42,10 @@ Solver::Solver(IConfiguration::Ptr configuration) : m_Configuration(configuratio
 	}
 }
 
+Solver::~Solver()
+{
+}
+
 bool Solver::IsBestPath(const Types::WordsPath& path)
 {
 	return m_BestPath.empty() || path.size() < m_BestPath.size();

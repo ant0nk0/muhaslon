@@ -5,6 +5,7 @@
 namespace MuhaSlon
 {
 
+//! interface for Configuration
 class IConfiguration
 {
 public:
@@ -14,7 +15,6 @@ public:
 	typedef std::shared_ptr<Vocabulary> VocabularyPtr;
 
 public:
-	virtual void Initialize() = 0;
 	virtual StringPtr GetStartWord() = 0;
 	virtual StringPtr GetEndWord() = 0;
 	virtual VocabularyPtr GetVocabulary() = 0;

@@ -2,26 +2,29 @@
 
 #include "iconfiguration.h"
 #include "types.h"
+#include "non_copyable.h"
 #include <unordered_map>
 #include <string>
 
 namespace MuhaSlon
 {
 
-class Solver
+//! Muha-Slon game solver
+class Solver : NonCopyable
 {
 public:
-
 	Solver(IConfiguration::Ptr configuration);
+	~Solver();
 
-	bool IsBestPath(const Types::WordsPath& path);
-
-	void Visit(WordItem::Ptr item);
-
+public:
 	Types::Solution Run();
 
 private:
-	IConfiguration::Ptr  m_Configuration;
+	bool IsBestPath(const Types::WordsPath& path);
+	void Visit(WordItem::Ptr item);
+
+private:
+	IConfiguration::Ptr m_Configuration;
 	std::unordered_map<std::string, std::unique_ptr<WordItem>> m_AllWords;
 	Types::WordsPath m_Path;
 	Types::WordsPath m_BestPath;

@@ -7,7 +7,6 @@ using namespace MuhaSlon;
 
 struct MockConfiguration : IConfiguration
 {
-	MOCK_METHOD0(Initialize,void());
 	MOCK_METHOD0(GetStartWord,StringPtr());
 	MOCK_METHOD0(GetEndWord,StringPtr());
 	MOCK_METHOD0(GetVocabulary,VocabularyPtr());
