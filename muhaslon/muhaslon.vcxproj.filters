@@ -33,7 +33,7 @@
     <ClCompile Include="near_words_checker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="configuration_vallidator.cpp">
+    <ClCompile Include="configuration_validator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -79,7 +79,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="configuration.cpp" />
-    <ClCompile Include="configuration_vallidator.cpp" />
+    <ClCompile Include="configuration_validator.cpp" />
     <ClCompile Include="muhaslon.cpp" />
     <ClCompile Include="near_words_checker.cpp" />
     <ClCompile Include="solver.cpp" />
