@@ -1,5 +1,5 @@
-#include "near_words.h"
-#include <gtest/gtest.h>
+#include "near_words_checker.h"
+#include <gmock/gmock.h>
 
 using namespace MuhaSlon;
 

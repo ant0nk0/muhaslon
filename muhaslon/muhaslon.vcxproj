@@ -79,16 +79,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="configuration.cpp" />
+    <ClCompile Include="configuration_vallidator.cpp" />
     <ClCompile Include="muhaslon.cpp" />
-    <ClCompile Include="near_words.cpp" />
+    <ClCompile Include="near_words_checker.cpp" />
     <ClCompile Include="solver.cpp" />
     <ClCompile Include="word_guard.cpp" />
     <ClCompile Include="word_item.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="configuration.h" />
+    <ClInclude Include="configuration_validator.h" />
     <ClInclude Include="iconfiguration.h" />
-    <ClInclude Include="near_words.h" />
+    <ClInclude Include="near_words_checker.h" />
     <ClInclude Include="solver.h" />
     <ClInclude Include="types.h" />
     <ClInclude Include="word_guard.h" />

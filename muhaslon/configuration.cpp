@@ -58,6 +58,9 @@ void Configuration::ReadStartEndWords(std::istream& stream)
 
 	if (m_EndWord->empty())
 		throw std::runtime_error("End word can't be empty");
+
+	if (m_StartWord->size() != m_EndWord->size())
+		throw std::runtime_error("Start/end words differs by length");
 }
 
 void Configuration::ReadVocabulary(std::istream& stream)

@@ -1,7 +1,8 @@
 #include "solver.h"
 #include "configuration.h"
-#include "near_words.h"
+#include "near_words_checker.h"
 #include "word_guard.h"
+#include "configuration_validator.h"
 #include <string>
 
 namespace MuhaSlon
@@ -9,11 +10,7 @@ namespace MuhaSlon
 
 Solver::Solver(IConfiguration::Ptr configuration) : m_Configuration(configuration)
 {
-	if (m_Configuration->GetStartWord()->size() !=
-		m_Configuration->GetEndWord()->size())
-	{
-		throw std::runtime_error("Start/end words differs by length");
-	}
+	ConfigurationValidator::Check(configuration);
 
 	auto const expectedWordSize = m_Configuration->GetStartWord()->size();
 	WordItem::Ptr startWordItem = nullptr;

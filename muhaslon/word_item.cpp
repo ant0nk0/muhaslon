@@ -3,7 +3,6 @@
 namespace MuhaSlon
 {
 
-
 WordItem::WordItem(const std::string& word) 
 	: m_Value(word), m_IsUsed()
 {

@@ -1,6 +1,6 @@
-#include "configuration.cpp"
+#include "configuration.h"
 #include <sstream>
-#include <gtest/gtest.h>
+#include <gmock/gmock.h>
 
 using namespace MuhaSlon;
 
@@ -88,6 +88,28 @@ TEST_F(ConfigurationTest, EmptyEndWord)
 {
 	se << std::endl;
 	se << std::endl;
+
+	FakeConfiguration config(se, voc);
+	EXPECT_THROW(config.Initialize(), std::exception);
+}
+
+TEST_F(ConfigurationTest, StartEndWordLengthEquals)
+{
+	{
+		se << "KOT" << std::endl;
+		se << "TOT" << std::endl;
+	}
+
+	FakeConfiguration config(se, voc);
+	EXPECT_NO_THROW(config.Initialize());
+}
+
+TEST_F(ConfigurationTest, StartEndWordLengthNotEquals)
+{
+	{
+		se << "KOT" << std::endl;
+		se << "TOPT" << std::endl;
+	}
 
 	FakeConfiguration config(se, voc);
 	EXPECT_THROW(config.Initialize(), std::exception);

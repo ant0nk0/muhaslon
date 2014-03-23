@@ -18,9 +18,6 @@
     <ClCompile Include="muhaslon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="near_words.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="word_item.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -33,11 +30,14 @@
     <ClCompile Include="solver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="near_words_checker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="configuration_vallidator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="near_words.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -54,6 +54,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="solver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="near_words_checker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="configuration_validator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

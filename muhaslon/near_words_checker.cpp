@@ -1,5 +1,4 @@
-#pragma once
-#include <string>
+#include "near_words_checker.h"
 #include <cstdint>
 
 namespace MuhaSlon
@@ -7,7 +6,7 @@ namespace MuhaSlon
 namespace Helpers
 {
 
-inline bool CheckWordsAreNear(const std::string& lhs, const std::string& rhs)
+bool CheckWordsAreNear(const std::string& lhs, const std::string& rhs)
 {
 	if (lhs.size() != rhs.size())
 		return false;

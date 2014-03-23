@@ -1,8 +1,12 @@
-#include <gtest/gtest-all.cc>
+#include "word_guard.cpp"
+#include "near_words_checker.cpp"
+#include "configuration.cpp"
+#include "word_item.cpp"
+#include <gmock-gtest-all.cc>
 
 int main(int argc, char** argv)
 {
-	testing::InitGoogleTest(&argc, argv);
+	testing::InitGoogleMock(&argc, argv);
 	return RUN_ALL_TESTS();
 }
 
