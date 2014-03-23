@@ -15,6 +15,9 @@ public:
 	typedef std::shared_ptr<Vocabulary> VocabularyPtr;
 
 public:
+	virtual ~IConfiguration() {}
+
+public:
 	virtual StringPtr GetStartWord() = 0;
 	virtual StringPtr GetEndWord() = 0;
 	virtual VocabularyPtr GetVocabulary() = 0;
