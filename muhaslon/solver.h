@@ -2,6 +2,8 @@
 
 #include "iconfiguration.h"
 #include "types.h"
+#include <unordered_map>
+#include <string>
 
 namespace MuhaSlon
 {
@@ -16,11 +18,11 @@ public:
 
 	void Visit(WordItem::Ptr item);
 
-	Types::WordsPath Run();
+	Types::Solution Run();
 
 private:
 	IConfiguration::Ptr  m_Configuration;
-	std::list<std::unique_ptr<WordItem>> m_AllWords;
+	std::unordered_map<std::string, std::unique_ptr<WordItem>> m_AllWords;
 	Types::WordsPath m_Path;
 	Types::WordsPath m_BestPath;
 	WordItem::Ptr m_StartWordItem;

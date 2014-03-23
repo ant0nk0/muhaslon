@@ -81,6 +81,7 @@
     <ClCompile Include="configuration_tests.cpp" />
     <ClCompile Include="configuration_validator_tests.cpp" />
     <ClCompile Include="near_words_tests.cpp" />
+    <ClCompile Include="solver_tests.cpp" />
     <ClCompile Include="tests.cpp" />
     <ClCompile Include="word_guard_tests.cpp" />
   </ItemGroup>

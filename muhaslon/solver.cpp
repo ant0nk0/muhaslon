@@ -13,36 +13,33 @@ Solver::Solver(IConfiguration::Ptr configuration) : m_Configuration(configuratio
 	ConfigurationValidator::Check(configuration);
 
 	auto const expectedWordSize = m_Configuration->GetStartWord()->size();
-	WordItem::Ptr startWordItem = nullptr;
-	WordItem::Ptr endWordItem = nullptr;
 
 	for (auto const& word : *m_Configuration->GetVocabulary())
 	{
 		if (word.size() != expectedWordSize)
 			continue;
 
+		if (m_AllWords.find(word) != m_AllWords.end())
+			continue;
+
 		auto newItem = WordItem::Make(word);
 
 		if (word == *m_Configuration->GetStartWord())
-			startWordItem = m_StartWordItem = newItem.get();
-		else if (word == *m_Configuration->GetEndWord())
-			endWordItem = newItem.get();
+			m_StartWordItem = newItem.get();
 
-		for (auto& item : m_AllWords)
+		for (auto& word : m_AllWords)
+		{
+			auto& item = word.second;
+
 			if (Helpers::CheckWordsAreNear(newItem->Get(), item->Get()))
 			{
 				newItem->AddLink(item.get());
 				item->AddLink(newItem.get());
 			}
+		}
 
-			m_AllWords.push_back(std::move(newItem));
+		m_AllWords.emplace(word, std::move(newItem));
 	}
-
-	if (startWordItem == nullptr)
-		throw std::runtime_error("Failed to find Start word in the vocabulary");
-
-	if (endWordItem == nullptr)
-		throw std::runtime_error("Failed to find End word in the vocabulary");
 }
 
 bool Solver::IsBestPath(const Types::WordsPath& path)
@@ -64,10 +61,16 @@ void Solver::Visit(WordItem::Ptr item)
 		Visit(child);
 }
 
-Types::WordsPath Solver::Run()
+Types::Solution Solver::Run()
 {
 	Visit(m_StartWordItem);
-	return m_BestPath;
+
+	Types::Solution solution;
+
+	for (auto item : m_BestPath)
+		solution.push_back(item->Get());
+
+	return solution;
 }
 
 } // namespace MuhaSlon

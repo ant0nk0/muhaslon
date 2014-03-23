@@ -105,7 +105,7 @@ TEST_F(TestConfigurationValidator,AllOk)
 {
 	auto someValue = std::make_shared<IConfiguration::StringPtr::element_type>("some_value");
 	auto voc = std::make_shared<IConfiguration::Vocabulary>();
-	voc->push_back("some_word");
+	voc->push_back("some_value");
 
 	Init(someValue, someValue, voc);
 
@@ -118,7 +118,32 @@ TEST_F(TestConfigurationValidator,WordSizesNotEquals)
 	auto endWord = std::make_shared<IConfiguration::StringPtr::element_type>("some_value111");
 
 	auto voc = std::make_shared<IConfiguration::Vocabulary>();
-	voc->push_back("some_word");
+	voc->push_back("some_value");
+	voc->push_back("some_value111");
+
+	Init(startWord, endWord, voc);
+
+	EXPECT_THROW(ConfigurationValidator::Check(m_Config), std::runtime_error);
+}
+
+TEST_F(TestConfigurationValidator,StartWordNotInVocabulary)
+{
+	auto startWord = std::make_shared<IConfiguration::StringPtr::element_type>("some_value1");
+	auto endWord = std::make_shared<IConfiguration::StringPtr::element_type>("some_value2");
+	auto voc = std::make_shared<IConfiguration::Vocabulary>();
+	voc->push_back("some_value2");
+
+	Init(startWord, endWord, voc);
+
+	EXPECT_THROW(ConfigurationValidator::Check(m_Config), std::runtime_error);
+}
+
+TEST_F(TestConfigurationValidator,EndWordNotInVocabulary)
+{
+	auto startWord = std::make_shared<IConfiguration::StringPtr::element_type>("some_value1");
+	auto endWord = std::make_shared<IConfiguration::StringPtr::element_type>("some_value2");
+	auto voc = std::make_shared<IConfiguration::Vocabulary>();
+	voc->push_back("some_value1");
 
 	Init(startWord, endWord, voc);
 

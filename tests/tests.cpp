@@ -3,6 +3,7 @@
 #include "configuration.cpp"
 #include "word_item.cpp"
 #include "configuration_validator.cpp"
+#include "solver.cpp"
 #include <gmock-gtest-all.cc>
 
 int main(int argc, char** argv)

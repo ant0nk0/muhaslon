@@ -16,12 +16,35 @@ void CheckParameter(T param, const std::string& name)
 
 void ConfigurationValidator::Check(IConfiguration::Ptr configuration)
 {
-	CheckParameter(configuration->GetStartWord(), "Start word");
-	CheckParameter(configuration->GetEndWord(), "End word");
-	CheckParameter(configuration->GetVocabulary(), "Vocabulary");
+	auto startWord = configuration->GetStartWord();
+	CheckParameter(startWord, "Start word");
 
-	if (configuration->GetStartWord()->size() != configuration->GetEndWord()->size())
+	auto endWord = configuration->GetEndWord();
+	CheckParameter(endWord, "End word");
+
+	auto vocabulary = configuration->GetVocabulary();
+	CheckParameter(vocabulary, "Vocabulary");
+
+	if (startWord->size() != endWord->size())
 		throw std::runtime_error("Size of Start/End words not equals");
+	
+	bool hasStartWord = false;
+	bool hasEndWord = false;
+
+	for (auto const& word : *vocabulary)
+	{
+		if (word == *startWord)
+			hasStartWord = true;
+
+		if (word == *endWord)
+			hasEndWord = true;
+	}
+
+	if (!hasStartWord)
+		throw std::runtime_error("Vocabulary has not Start word");
+
+	if (!hasEndWord)
+		throw std::runtime_error("Vocabulary has not End word");
 }
 
 } // namespace MuhaSlon
