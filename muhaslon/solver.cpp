@@ -59,7 +59,10 @@ void Solver::Visit(WordItem::Ptr item)
 	WordGuard used(item, m_Path);
 
 	if (item->Get() == *m_Configuration->GetEndWord() && IsBestPath(m_Path))
+	{
 		m_BestPath = m_Path;
+		return;
+	}
 
 	for (auto child : item->Links())
 		Visit(child);
