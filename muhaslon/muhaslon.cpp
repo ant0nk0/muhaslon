@@ -16,6 +16,7 @@ int main(int argc, char** argv)
 	try
 	{
 		auto configuration = std::make_shared<MuhaSlon::Configuration>(argv[1], argv[2]);
+		configuration->Initialize();
 
 		MuhaSlon::Solver solver(configuration);
 	
