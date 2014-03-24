@@ -25,7 +25,8 @@ void Configuration::Initialize()
 	{
 		std::ifstream file;
 		file.open(m_StartEndWordPath);
-		if (file.bad())
+
+		if (!file.good())
 		{
 			std::stringstream ss;
 			ss << "Failed to open start/end file: " << m_StartEndWordPath;
@@ -40,7 +41,7 @@ void Configuration::Initialize()
 		std::ifstream file;
 		file.open(m_VocabularyPath);
 
-		if (file.bad())
+		if (!file.good())
 		{
 			std::stringstream ss;
 			ss << "Failed to open vocabulary file: " << m_VocabularyPath;
